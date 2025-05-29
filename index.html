@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orchanger 验签平台</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="https://orchanger.com" class="logo">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>Orchanger</span>
+                </a>
+                <a href="https://orchanger.com" class="back-btn">
+                    <i class="fas fa-arrow-left"></i>
+                    返回企业首页
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <div class="hero-section">
+                <h1 class="hero-title">数字签名验证平台</h1>
+                <p class="hero-subtitle">安全、快速、可靠的文件验签服务</p>
+            </div>
+
+            <div class="services-grid">
+                <div class="service-card" onclick="navigateToService('/certcheck.html')">
+                    <div class="service-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h3 class="service-title">数字签名验签</h3>
+                    <p class="service-description">验证数字证书签名的完整性和真实性</p>
+                    <div class="service-note">
+                        <i class="fas fa-info-circle"></i>
+                        适用于 2025年1月1日及之后签发的文件
+                    </div>
+                    <div class="service-arrow">
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                </div>
+
+                <div class="service-card" onclick="navigateToService('/hashcheck.html')">
+                    <div class="service-icon">
+                        <i class="fas fa-hashtag"></i>
+                    </div>
+                    <h3 class="service-title">HASH 验签</h3>
+                    <p class="service-description">通过哈希值验证文件的完整性</p>
+                    <div class="service-note">
+                        <i class="fas fa-info-circle"></i>
+                        快速验证文件是否被篡改
+                    </div>
+                    <div class="service-arrow">
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                </div>
+
+                <div class="service-card" onclick="showEmailContact()">
+                    <div class="service-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3 class="service-title">邮件查询验签</h3>
+                    <p class="service-description">通过邮件联系我们进行人工验签</p>
+                    <div class="service-note">
+                        <i class="fas fa-info-circle"></i>
+                        适用于 2024年12月31日及之前签发的文件
+                    </div>
+                    <div class="service-arrow">
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                </div>
+
+                <div class="service-card" onclick="navigateToService('https://signcheck.oa.orchanger.com')">
+                    <div class="service-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <h3 class="service-title">内部文件验证</h3>
+                    <p class="service-description">企业内部文件验证系统</p>
+                    <div class="service-note">
+                        <i class="fas fa-info-circle"></i>
+                        仅限内部员工使用
+                    </div>
+                    <div class="service-arrow">
+                        <i class="fas fa-external-link-alt"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-section">
+                <div class="info-card">
+                    <h3>安全保障</h3>
+                    <p>采用业界领先的加密技术，确保验签过程的安全性和可靠性</p>
+                </div>
+                <div class="info-card">
+                    <h3>快速验证</h3>
+                    <p>高效的验签算法，秒级完成文件验证，提升工作效率</p>
+                </div>
+                <div class="info-card">
+                    <h3>全天候服务</h3>
+                    <p>7x24小时不间断服务，随时随地进行文件验签</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2024 Orchanger. 保留所有权利。</p>
+                <div class="footer-links">
+                    <a href="https://orchanger.com">企业首页</a>
+                    <a href="mailto:service@orchanger.com">联系我们</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html> 
