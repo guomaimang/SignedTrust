@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数字签名验签 - Orchanger 验签平台</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="certcheck.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>Orchanger</span>
+                </a>
+                <div class="header-nav">
+                    <a href="index.html" class="nav-btn">
+                        <i class="fas fa-arrow-left"></i>
+                        返回首页
+                    </a>
+                    <a href="https://orchanger.com" class="nav-btn">
+                        <i class="fas fa-home"></i>
+                        企业首页
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <div class="page-header">
+                <div class="page-icon">
+                    <i class="fas fa-certificate"></i>
+                </div>
+                <h1 class="page-title">数字签名验签</h1>
+                <p class="page-subtitle">验证PDF文件中的数字证书签名</p>
+                <div class="page-note">
+                    <i class="fas fa-info-circle"></i>
+                    适用于 2025年1月1日及之后签发的文件
+                </div>
+            </div>
+
+            <div class="verify-section">
+                <div class="upload-area" id="uploadArea">
+                    <div class="upload-content">
+                        <div class="upload-icon">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                        </div>
+                        <h3>拖放PDF文件到此处</h3>
+                        <p>或者 <button class="file-select-btn" id="fileSelectBtn">选择文件</button></p>
+                        <div class="upload-info">
+                            <small>支持的文件格式：PDF (最大 10MB)</small>
+                        </div>
+                    </div>
+                    <input type="file" id="fileInput" accept=".pdf" style="display: none;">
+                </div>
+
+                <div class="verification-panel" id="verificationPanel" style="display: none;">
+                    <div class="file-info">
+                        <div class="file-details">
+                            <div class="file-icon">
+                                <i class="fas fa-file-pdf"></i>
+                            </div>
+                            <div class="file-meta">
+                                <div class="file-name" id="fileName"></div>
+                                <div class="file-size" id="fileSize"></div>
+                            </div>
+                        </div>
+                        <button class="remove-file-btn" id="removeFileBtn">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+
+                    <div class="verification-progress" id="verificationProgress">
+                        <div class="progress-bar">
+                            <div class="progress-fill"></div>
+                        </div>
+                        <div class="progress-text">正在验证数字签名...</div>
+                    </div>
+
+                    <div class="verification-results" id="verificationResults" style="display: none;">
+                        <div class="result-header">
+                            <div class="result-status" id="resultStatus">
+                                <i class="fas fa-check-circle"></i>
+                                <span>验证完成</span>
+                            </div>
+                        </div>
+
+                        <div class="result-cards">
+                            <div class="result-card">
+                                <div class="result-icon">
+                                    <i class="fas fa-signature"></i>
+                                </div>
+                                <div class="result-content">
+                                    <h4>签名完整性</h4>
+                                    <div class="result-value" id="signatureIntegrity">
+                                        <span class="status-badge status-checking">检查中...</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="result-card">
+                                <div class="result-icon">
+                                    <i class="fas fa-certificate"></i>
+                                </div>
+                                <div class="result-content">
+                                    <h4>证书状态</h4>
+                                    <div class="result-value" id="certificateStatus">
+                                        <span class="status-badge status-checking">检查中...</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="result-card">
+                                <div class="result-icon">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                                <div class="result-content">
+                                    <h4>签名时间</h4>
+                                    <div class="result-value" id="signatureTime">
+                                        <span class="status-badge status-checking">检查中...</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="result-card">
+                                <div class="result-icon">
+                                    <i class="fas fa-shield-alt"></i>
+                                </div>
+                                <div class="result-content">
+                                    <h4>文档完整性</h4>
+                                    <div class="result-value" id="documentIntegrity">
+                                        <span class="status-badge status-checking">检查中...</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="signature-details" id="signatureDetails">
+                            <h4>签名详细信息</h4>
+                            <div class="details-grid">
+                                <div class="detail-item">
+                                    <label>签名者：</label>
+                                    <span id="signerName">-</span>
+                                </div>
+                                <div class="detail-item">
+                                    <label>签名时间：</label>
+                                    <span id="signingTime">-</span>
+                                </div>
+                                <div class="detail-item">
+                                    <label>证书颁发者：</label>
+                                    <span id="certificateIssuer">-</span>
+                                </div>
+                                <div class="detail-item">
+                                    <label>证书有效期：</label>
+                                    <span id="certificateValidity">-</span>
+                                </div>
+                                <div class="detail-item">
+                                    <label>签名算法：</label>
+                                    <span id="signatureAlgorithm">-</span>
+                                </div>
+                                <div class="detail-item">
+                                    <label>哈希算法：</label>
+                                    <span id="hashAlgorithm">-</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="action-buttons">
+                            <button class="btn btn-primary" id="downloadReportBtn">
+                                <i class="fas fa-download"></i>
+                                下载验证报告
+                            </button>
+                            <button class="btn btn-secondary" id="verifyAnotherBtn">
+                                <i class="fas fa-plus"></i>
+                                验证其他文件
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="help-section">
+                <div class="help-card">
+                    <h3>如何使用？</h3>
+                    <ol>
+                        <li>将需要验证的PDF文件拖放到上方区域</li>
+                        <li>系统将自动检测文件中的数字签名</li>
+                        <li>验证签名的完整性和证书状态</li>
+                        <li>查看详细的验证结果报告</li>
+                    </ol>
+                </div>
+                <div class="help-card">
+                    <h3>验证内容</h3>
+                    <ul>
+                        <li><i class="fas fa-check"></i> 数字签名完整性验证</li>
+                        <li><i class="fas fa-check"></i> 证书有效性检查</li>
+                        <li><i class="fas fa-check"></i> 文档是否被篡改</li>
+                        <li><i class="fas fa-check"></i> 签名时间戳验证</li>
+                    </ul>
+                </div>
+                <div class="help-card">
+                    <h3>安全保障</h3>
+                    <ul>
+                        <li><i class="fas fa-lock"></i> 文件仅在浏览器本地处理</li>
+                        <li><i class="fas fa-lock"></i> 不会上传到服务器</li>
+                        <li><i class="fas fa-lock"></i> 验证完成后自动清除缓存</li>
+                        <li><i class="fas fa-lock"></i> 采用业界标准验证算法</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2024 Orchanger. 保留所有权利。</p>
+                <div class="footer-links">
+                    <a href="index.html">返回首页</a>
+                    <a href="https://orchanger.com">企业首页</a>
+                    <a href="mailto:service@orchanger.com">联系我们</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 加载PDF处理库 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <script src="pdf-signature-verifier.js"></script>
+    <script src="certcheck.js"></script>
+</body>
+</html> 
