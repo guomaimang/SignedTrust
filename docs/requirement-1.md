@@ -1,3 +1,16 @@
+
+项目要求
+
+- React
+- Zustand (状态管理)
+- Material-UI V6
+- JavaScript (不使用TypeScript)
+- Axios，拦截器
+- notistack
+- date-fns 
+- react-router-dom
+- react-dom
+
 我正在开发一个企业自用的验签平台。
 
 这是基于纯前台项目。
@@ -14,15 +27,3 @@
 4. 内部文件验证 , 导航到 signcheck.oa.orchanger.com
 
 页面设计要优雅规范，适用于电脑和手机页面。
-
-项目要求
-
-- React
-- Zustand (状态管理)
-- Material-UI V6
-- JavaScript (不使用TypeScript)
-- Axios，拦截器
-- notistack
-- date-fns 
-
-## 
