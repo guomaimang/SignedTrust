@@ -11,6 +11,8 @@
 - react-router-dom
 - react-dom
 
+- @ninja-labs/verify-pdf
+
 我正在开发一个企业自用的验签平台。
 
 这是基于纯前台项目。
