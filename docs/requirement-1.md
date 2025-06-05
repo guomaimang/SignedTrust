@@ -3,7 +3,7 @@
 
 - React
 - Zustand (状态管理)
-- Material-UI V6
+- Material-UI V6, @mui/icons-material, @emotion/react,@emotion/styled
 - JavaScript (不使用TypeScript)
 - Axios，拦截器
 - notistack
