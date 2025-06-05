@@ -1,9 +1,8 @@
 我正在开发一个企业自用的验签平台。
 
+这是基于纯前台项目。
 
-
-
-这是基于纯前端页面。第一步，请你设计一个落地页。
+第一步，请你设计一个落地页。
 
 落地页能够返回到 Orchanger 企业首页 orchanger.com。
 
@@ -15,3 +14,15 @@
 4. 内部文件验证 , 导航到 signcheck.oa.orchanger.com
 
 页面设计要优雅规范，适用于电脑和手机页面。
+
+项目要求
+
+- React
+- Zustand (状态管理)
+- Material-UI V6
+- JavaScript (不使用TypeScript)
+- Axios，拦截器
+- notistack
+- date-fns 
+
+## 
