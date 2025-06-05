@@ -8,9 +8,6 @@ import {
   Button,
   Grid,
   Box,
-  AppBar,
-  Toolbar,
-  IconButton,
   Paper,
   Alert,
   useTheme,
@@ -18,14 +15,14 @@ import {
 } from '@mui/material';
 import {
   VerifiedUser,
-  Security,
   Email,
   Business,
-  Home,
   CheckCircle,
   Tag
 } from '@mui/icons-material';
 import { enqueueSnackbar } from 'notistack';
+import Header from './components/Header';
+import Footer from './components/Footer';
 
 const LandingPage = () => {
   const theme = useTheme();
@@ -45,9 +42,7 @@ const LandingPage = () => {
     );
   };
 
-  const handleHomeNavigation = () => {
-    window.open('https://orchanger.com', '_blank');
-  };
+
 
   const handleInternalVerification = () => {
     window.open('https://signcheck.oa.orchanger.com', '_blank');
@@ -89,21 +84,7 @@ const LandingPage = () => {
   return (
     <Box sx={{ minHeight: '100vh', backgroundColor: '#f5f5f5', width: '100%' }}>
       {/* 导航栏 */}
-      <AppBar position="static" elevation={2}>
-        <Toolbar>
-          <Security sx={{ mr: 2 }} />
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            Orchanger 验签平台
-          </Typography>
-          <Button
-            color="inherit"
-            startIcon={<Home />}
-            onClick={handleHomeNavigation}
-          >
-            返回首页
-          </Button>
-        </Toolbar>
-      </AppBar>
+      <Header />
 
       {/* 主要内容 */}
       <Container maxWidth={false} sx={{ py: 4, px: { xs: 2, sm: 4, md: 6, lg: 8 } }}>
@@ -120,11 +101,11 @@ const LandingPage = () => {
             }}
           >
             <CheckCircle sx={{ fontSize: 60, mb: 2 }} />
-            <Typography variant="h3" component="h1" gutterBottom>
+            <Typography variant="h4" component="h1" gutterBottom>
               欢迎使用 Orchanger 验签平台
             </Typography>
             <Typography variant="h6" sx={{ opacity: 0.9 }}>
-              选择适合您的验证方式，确保文件的完整性和真实性
+              帮助确认文件是否为 公司/子公司/部门 签发，确保文件真实性和完整性。
             </Typography>
           </Paper>
 
@@ -228,18 +209,7 @@ const LandingPage = () => {
       </Container>
 
       {/* Footer - 保持全宽 */}
-      <Paper
-        elevation={1}
-        sx={{
-          p: 3,
-          textAlign: 'center',
-          backgroundColor: theme.palette.grey[100]
-        }}
-      >
-        <Typography variant="body2" color="text.secondary">
-          © {new Date().getFullYear()} Orchanger. 版权所有 | 如有疑问，请联系 service@orchanger.com
-        </Typography>
-      </Paper>
+      <Footer />
     </Box>
   );
 };
