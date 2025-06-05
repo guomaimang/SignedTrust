@@ -51,7 +51,7 @@ const LandingPage = () => {
   const verificationOptions = [
     {
       title: '数字签名验签',
-      description: '适用于 2025年1月1日 及之后签发的文件',
+      description: '适用于 2025年1月1日 及之后签发的电子 PDF',
       icon: <VerifiedUser sx={{ fontSize: 40, color: theme.palette.primary.main }} />,
       path: '/certcheck.html',
       color: 'primary',
@@ -59,14 +59,15 @@ const LandingPage = () => {
     },
     {
       title: 'HASH 验签',
-      description: '文档完整性哈希值验证',
+      description: '适用于 2025年1月1日 及之后签发的电子文件',
       icon: <Tag sx={{ fontSize: 40, color: theme.palette.success.main }} />,
       path: '/hashcheck.html',
-      color: 'success'
+      color: 'success',
+      isNew: true
     },
     {
       title: '邮件查询验签',
-      description: '适用于 2024年12月31日 及之前签发的文件',
+      description: '适用于所有 电子文件/扫描件/纸质文件',
       icon: <Email sx={{ fontSize: 40, color: theme.palette.warning.main }} />,
       action: handleEmailContact,
       color: 'warning',
@@ -74,7 +75,7 @@ const LandingPage = () => {
     },
     {
       title: '内部文件验证',
-      description: '企业内部专用验证系统',
+      description: '组织内部专用验证系统，需登录',
       icon: <Business sx={{ fontSize: 40, color: theme.palette.secondary.main }} />,
       action: handleInternalVerification,
       color: 'secondary'
@@ -113,7 +114,7 @@ const LandingPage = () => {
           <Alert severity="info" sx={{ mb: 4 }}>
             <Typography variant="body1">
               <strong>温馨提示：</strong>
-              请根据您的文件签发日期选择合适的验证方式。2025年1月1日起，我们启用了新的数字签名验证系统。
+              请根据文件签发日期及类型选择合适的验证方式。2025年1月起，我们启用了新的验证系统。
             </Typography>
           </Alert>
 
@@ -150,7 +151,7 @@ const LandingPage = () => {
                         fontWeight: 'bold'
                       }}
                     >
-                      新版本
+                      新版本 & 秒出结果
                     </Box>
                   )}
                   {option.isLegacy && (
@@ -168,7 +169,7 @@ const LandingPage = () => {
                         fontWeight: 'bold'
                       }}
                     >
-                      旧版本
+                      7个工作日
                     </Box>
                   )}
                   
