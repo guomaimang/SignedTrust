@@ -107,7 +107,7 @@ const LandingPage = () => {
               欢迎使用 Orchanger 验签平台
             </Typography>
             <Typography variant="h6" sx={{ opacity: 0.9 }}>
-              帮助确认文件是否为 公司/子公司/部门 签发，确保文件真实性和完整性。
+              帮助确认文件是否为 组织/部门/员工 签发，确保文件真实性和完整性。
             </Typography>
           </Paper>
 
