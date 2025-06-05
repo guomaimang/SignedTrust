@@ -23,8 +23,8 @@
 
 其目的是导航到不同的验证页面
 
-1.  数字签名 验签 ，导航到 /certcheck.html, 适用于 2025年1月1日及之后签发的文件
-2.  HASH 验签, 导航到 /hashcheck.html
+1.  数字签名 验签 ，导航到 /certcheck, 适用于 2025年1月1日及之后签发的文件
+2.  HASH 验签, 导航到 /hashcheck
 3. 邮件查询验签, alert 显示 邮件联系 service@orcanger.com，适用于 2024年12月31日及之前签发的文件
 4. 内部文件验证 , 导航到 signcheck.oa.orchanger.com
 

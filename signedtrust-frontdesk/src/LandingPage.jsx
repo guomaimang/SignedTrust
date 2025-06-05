@@ -53,7 +53,7 @@ const LandingPage = () => {
       title: '数字签名验签',
       description: '适用于 2025年1月1日 及之后签发的电子 PDF',
       icon: <VerifiedUser sx={{ fontSize: 40, color: theme.palette.primary.main }} />,
-      path: '/certcheck.html',
+      path: '/certcheck',
       color: 'primary',
       isNew: true
     },
