@@ -74,11 +74,12 @@ const LandingPage = () => {
       isLegacy: true
     },
     {
-      title: '内部文件验证',
-      description: '组织内部专用验证系统，需登录',
+      title: '内部验证',
+      description: '仅供 Orchanger 员工使用，需登录',
       icon: <Business sx={{ fontSize: 40, color: theme.palette.secondary.main }} />,
       action: handleInternalVerification,
-      color: 'secondary'
+      color: 'secondary',
+      buttonText: '前往OA验证'
     }
   ];
 
@@ -199,7 +200,7 @@ const LandingPage = () => {
                         fontWeight: 'bold'
                       }}
                     >
-                      {option.action ? '联系我们' : '开始验证'}
+                      {option.buttonText || (option.action ? '联系我们' : '开始验证')}
                     </Button>
                   </CardActions>
                 </Card>
