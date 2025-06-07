@@ -144,6 +144,22 @@ const CertCheckPage = () => {
             </Typography>
           </Box>
 
+          {/* 文件篡改检查 - 单独突出显示 */}
+          <Alert 
+            severity={verificationResult.integrity ? 'success' : 'error'}
+            icon={verificationResult.integrity ? <CheckCircle color="success" /> : <Warning color="error" />}
+            sx={{ mb: 3, fontSize: '1.1rem' }}
+          >
+            <Typography variant="h6" sx={{ fontWeight: 'bold' }}>
+              文件篡改验证: {verificationResult.integrity ? '✓ 文件未被篡改' : '✗ 文件可能已被篡改'}
+            </Typography>
+            <Typography variant="body2" sx={{ mt: 1 }}>
+              {verificationResult.integrity 
+                ? '文档内容与签名时保持一致，未发现修改痕迹' 
+                : '检测到文档内容可能在签名后被修改，请谨慎处理'}
+            </Typography>
+          </Alert>
+
           <Grid container spacing={2}>
             <Grid xs={12} sm={6}>
               <Alert 
@@ -176,7 +192,7 @@ const CertCheckPage = () => {
                 sx={{ mb: 2 }}
               >
                 <Typography variant="subtitle2">
-                  文档完整性: {getStatusText(verificationResult.integrity)}
+                  文件篡改检查: {verificationResult.integrity ? '未被篡改' : '可能被篡改'}
                 </Typography>
               </Alert>
             </Grid>
