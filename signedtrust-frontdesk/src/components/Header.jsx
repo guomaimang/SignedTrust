@@ -15,19 +15,31 @@ const Header = () => {
     window.open('https://orchanger.com', '_blank');
   };
 
+  const handleRootNavigation = () => {
+    window.location.href = '/';
+  };
+
   return (
     <AppBar position="static" elevation={2}>
       <Toolbar>
-        <Security sx={{ mr: 2 }} />
-        <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-          Orchanger 验签平台
+        <Security 
+          sx={{ mr: 2, cursor: 'pointer' }} 
+          onClick={handleRootNavigation}
+        />
+        <Typography 
+          variant="h6" 
+          component="div" 
+          sx={{ flexGrow: 1, cursor: 'pointer' }}
+          onClick={handleRootNavigation}
+        >
+          验签平台
         </Typography>
         <Button
           color="inherit"
           startIcon={<Home />}
           onClick={handleHomeNavigation}
         >
-          返回首页
+          返回企业首页
         </Button>
       </Toolbar>
     </AppBar>

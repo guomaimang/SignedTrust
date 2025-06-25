@@ -21,12 +21,14 @@ import {
   Tag
 } from '@mui/icons-material';
 import { enqueueSnackbar } from 'notistack';
+import { useNavigate } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
 
 const LandingPage = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+  const navigate = useNavigate();
 
   const handleEmailContact = () => {
     enqueueSnackbar(
@@ -45,13 +47,27 @@ const LandingPage = () => {
 
 
   const handleInternalVerification = () => {
-    window.open('https://signcheck.oa.orchanger.com', '_blank');
+    window.open('https://trustcheck.oa.orchanger.com', '_blank');
+  };
+
+  const handleHashVerification = () => {
+    enqueueSnackbar(
+      'HASH 验签功能正在开发中，请移步其他验证方式',
+      {
+        variant: 'warning',
+        autoHideDuration: 5000,
+        anchorOrigin: {
+          vertical: 'top',
+          horizontal: 'center'
+        }
+      }
+    );
   };
 
   const verificationOptions = [
     {
       title: '数字签名验签',
-      description: '适用于 2025年1月1日 及之后签发的电子 PDF',
+      description: '适用于 2025年5月1日 及之后签发的电子 PDF',
       icon: <VerifiedUser sx={{ fontSize: 40, color: theme.palette.primary.main }} />,
       path: '/certcheck',
       color: 'primary',
@@ -59,11 +75,12 @@ const LandingPage = () => {
     },
     {
       title: 'HASH 验签',
-      description: '适用于 2025年1月1日 及之后签发的电子文件',
+      description: '适用于 2025年5月1日 及之后签发的电子文件',
       icon: <Tag sx={{ fontSize: 40, color: theme.palette.success.main }} />,
-      path: '/hashcheck.html',
+      action: handleHashVerification,
       color: 'success',
-      isNew: true
+      isNew: true,
+      buttonText: '开始验证'
     },
     {
       title: '邮件查询验签',
@@ -84,12 +101,27 @@ const LandingPage = () => {
   ];
 
   return (
-    <Box sx={{ minHeight: '100vh', backgroundColor: '#f5f5f5', width: '100%' }}>
+    <Box 
+      sx={{ 
+        minHeight: '100vh', 
+        backgroundColor: '#f5f5f5', 
+        width: '100%',
+        display: 'flex',
+        flexDirection: 'column'
+      }}
+    >
       {/* 导航栏 */}
       <Header />
 
       {/* 主要内容 */}
-      <Container maxWidth={false} sx={{ py: 4, px: { xs: 2, sm: 4, md: 6, lg: 8 } }}>
+      <Container 
+        maxWidth={false} 
+        sx={{ 
+          py: 4, 
+          px: { xs: 2, sm: 4, md: 6, lg: 8 },
+          flex: 1
+        }}
+      >
         <Box sx={{ maxWidth: '900px', margin: '0 auto' }}>
           {/* 欢迎区域 */}
           <Paper
@@ -192,7 +224,13 @@ const LandingPage = () => {
                       color={option.color}
                       size="large"
                       fullWidth={isMobile}
-                      onClick={option.action || (() => window.location.href = option.path)}
+                      onClick={option.action || (() => {
+                        if (option.path.startsWith('/')) {
+                          navigate(option.path);
+                        } else {
+                          window.location.href = option.path;
+                        }
+                      })}
                       sx={{
                         mx: 2,
                         py: 1.5,

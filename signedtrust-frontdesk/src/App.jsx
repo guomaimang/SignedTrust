@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import LandingPage from './LandingPage'
-import CertCheckPage from './components/CertCheckPage'
+import CertCheckPage from './CertCheckPage'
 
 function App() {
   return (
